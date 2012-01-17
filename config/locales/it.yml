@@ -1,0 +1,25 @@
+---
+it:
+  activerecord:
+    attributes:
+      banner:
+        title: Titolo
+        enabled: Attivo?
+        attachment_width: Larghezza
+        position: Posizione
+    models:
+      banner:
+        one: Banner
+        many: Banners
+
+  baner: Banner
+  banners: Banners
+  banner:
+    banner: Banner
+    image:
+      one: Immagine
+      many: Immagini
+    banner_desc: Gestione banner.
+    new_page: Nuovo banner
+    editing_page: Modifica banner
+    confirm_delete: Sei sicuro?

@@ -1,0 +1,30 @@
+<div class='toolbar'>
+	<ul class='actions'>
+		<li id="new_product_link">
+			<%= button_link_to t("banner.new_page"), new_admin_banner_url, {:icon => 'add'} %>
+		</li>
+	</ul>
+	<br class='clear' />
+</div>
+
+<h1><%= t("banner.banner") %></h1>
+
+<table class="index">
+	<tr>
+		<th><%= Banner.human_attribute_name(:category) %></th>
+		<th><%= Banner.human_attribute_name(:enable) %></th>
+		<th><%= t("action") %></th>
+	</tr>
+	<tbody>
+		<% @banners.each do |banner| %>
+		<tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id banner %>">
+			<td><%= banner.category %></td>
+			<td><%= icon('tick') if banner.enabled %></td>
+			<td>
+				<%= link_to_edit banner %> &nbsp;
+				<%= link_to_delete banner %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
