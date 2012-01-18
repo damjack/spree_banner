@@ -2,7 +2,8 @@
 	<%= f.input :category %>
 	<%= f.input :url %>
 	<%= f.input :position %>
-	<%= f.inputs :attachment_width, :attachment_height %>
+	<%= f.input :attachment_width %>
+	<%= f.input :attachment_height %>
 	<%= f.input :enabled %>
-	<%= f.input :attachment, :as => :file, :label => I18n.t("banner.image.one").capitalize, :hint => f.object.attachment.blank? ? f.template.content_tag(:span, "No Image Yet") : f.template.image_tag(f.object.attachment.url(:thumbnail)) %>
+	<%= f.input :attachment, :as => :file, :label => I18n.t("banner.image.one").capitalize, :hint => f.object.attachment.blank? ? f.template.content_tag(:span, t("banner.no_image")) : f.template.image_tag(f.object.attachment.url(:thumbnail)) %>
 <% end %>

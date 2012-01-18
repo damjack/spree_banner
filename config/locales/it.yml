@@ -3,19 +3,24 @@ it:
   activerecord:
     attributes:
       banner:
-        title: Titolo
+        category: Categoria
         enabled: Attivo?
+        url: Link a prodotto o tassonomia o a sito esterno
         attachment_width: Larghezza
-        position: Posizione
+        attachment_height: Altezza
+        attachment: Immagine
+        position: Posizione (se esistono altri banner con la stessa categoria)
     models:
       banner:
         one: Banner
         many: Banners
 
-  baner: Banner
-  banners: Banners
   banner:
-    banner: Banner
+    one: Banner
+    many: Banners
+    enable: Attivo?
+    category: Categoria
+    no_image: Nessuna immagine caricata
     image:
       one: Immagine
       many: Immagini

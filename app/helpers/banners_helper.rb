@@ -7,7 +7,7 @@ module BannersHelper
     if !banner.blank?
       banner = banner.sort_by { |ban| ban.position }
 
-      content_tag(:div, content_tag(:ul, banner.map do |ban| content_tag(:li, link_to(image_tag(ban.attachment.url(:custom)), ban.url, { :title => ban.title })) end.join ), :class => "banner")
+      content_tag(:div, content_tag(:ul, raw(banner.map do |ban| content_tag(:li, image_tag(ban.attachment.url(:custom))) end.join) ), :class => "banner")
     end
   end
   

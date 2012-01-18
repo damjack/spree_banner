@@ -3,5 +3,24 @@
 */
 
 .banner {
-	
+	background: none;
+}
+
+.banner ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.banner ul li {
+	float: left;
+	background: none;
+	margin: 2px;
+}
+
+.banner img {
+	border: 0;
+	-webkit-box-shadow: 1px 2px 5px 0.6px #C1C5C8;
+	-moz-box-shadow: 1px 2px 5px 0.6px #C1C5C8;
+	box-shadow: 1px 2px 5px 0.6px #C1C5C8;
 }
