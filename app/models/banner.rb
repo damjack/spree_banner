@@ -1,8 +1,8 @@
 class Banner < ActiveRecord::Base
   
   has_attached_file :attachment,
-            :url  => "/assets/banner/:id/:style_:basename.:extension",
-            :path => ":rails_root/public/assets/banner/:id/:style_:basename.:extension",
+            :url  => "/spree/banner/:id/:style_:basename.:extension",
+            :path => ":rails_root/public/spree/banner/:id/:style_:basename.:extension",
             #:default_url => "/missing/:style.jpg",
             :styles => {
                   :thumbnail => "80x80#",
