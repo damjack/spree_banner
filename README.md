@@ -1,4 +1,4 @@
-SpreeMultiSlideshow
+SpreeBanner
 ===================
 
 Add banner for Spree Commerce Shop
@@ -34,5 +34,13 @@ displays banner for which the category column, dafault is ""
 	<%= insert_banner(:max => 10) %>
 </pre>
 limits the number of banner shown to 10 (default 1)
+<pre>
+	<%= insert_banner(:class => "your_class") %>
+</pre>
+set banner class (default banner)
+<pre>
+	<%= insert_banner(:style => "your_container") %>
+</pre>
+set banner container (default list[ul/li])
 
 Copyright (c) 2012 [Damiano Giacomello], released under the New BSD License

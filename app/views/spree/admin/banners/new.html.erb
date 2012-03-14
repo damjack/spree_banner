@@ -1,10 +1,7 @@
-<h1><%= t("banner.new_page") %></h1>
-<%= render "shared/error_messages", :target => @banner %>
+<h1><%= t(:new_banner) %></h1>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner } %>
 
 <%= semantic_form_for([:admin, @banner], :html => { :enctype => "multipart/form-data" }) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p class="form-buttons">
-    <%= button t("actions.create"), nil, 'submit' %>
-    <%= t("or") %> <%= link_to t("actions.cancel"), admin_banners_path %>
-  </p>
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
 <% end %>

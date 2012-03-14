@@ -10,8 +10,7 @@ module Spree
                       :custom => Proc.new { |instance| "#{instance.attachment_width}x#{instance.attachment_height}#" }
                 },
                 :convert_options => {
-                      :thumbnail => "-gravity center",
-                      :custom => "-gravity center"
+                      :thumbnail => "-gravity center"
                 }
     
     #process_in_background :image UTILE MA OCCORRE ATTIVARE ANCHE LA GEMMA DELAYED-PAPERCLIP

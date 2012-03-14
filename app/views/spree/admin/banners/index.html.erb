@@ -1,24 +1,26 @@
 <div class='toolbar'>
-	<ul class='actions'>
-		<li id="new_product_link">
-			<%= button_link_to t("banner.new_page"), new_admin_banner_url, {:icon => 'add'} %>
-		</li>
-	</ul>
-	<br class='clear' />
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t(:new_banner), spree.new_admin_banner_path, :icon => 'add' %>
+    </li>
+  </ul>
+  <br class="clear" />
 </div>
 
-<h1><%= t("banner.many") %></h1>
+<h1><%= t(:banner) %></h1>
 
 <table class="index">
 	<tr>
-		<th><%= t("banner.category") %></th>
-		<th><%= t("banner.enable") %></th>
-		<th><%= t("action") %></th>
+		<th><%= t(:category) %></th>
+		<th><%= t(:position) %></th>
+		<th><%= t(:enable) %></th>
+		<th><%= t(:action) %></th>
 	</tr>
 	<tbody>
 		<% @banners.each do |banner| %>
 		<tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id banner %>">
 			<td><%= banner.category %></td>
+			<td><%= banner.position %></td>
 			<td><%= icon('tick') if banner.enabled %></td>
 			<td>
 				<%= link_to_edit banner %> &nbsp;
