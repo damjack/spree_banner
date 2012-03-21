@@ -13,6 +13,9 @@ module Spree
                       :thumbnail => "-gravity center"
                 }
     
+    validates_presence_of :category, :attachment_width, :attachment_height
+    validates_attachment_presence :attachment
+    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "deve essere JPG, JPEG o PNG"
     #process_in_background :image UTILE MA OCCORRE ATTIVARE ANCHE LA GEMMA DELAYED-PAPERCLIP
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
 
