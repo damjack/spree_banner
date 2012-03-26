@@ -9,7 +9,7 @@ Basic Installation
 
 1. Add the following to your Gemfile
 <pre>
-  gem 'spree_banner', :git => 'git://github.com/damianogiacomello/spree_banner'
+  gem 'spree_banner', '~> 1.0.3'
 </pre>
 2. Run `bundle install`
 3. To copy and apply migrations run:
@@ -41,6 +41,6 @@ set banner class (default banner)
 <pre>
 	<%= insert_banner(:style => "your_container") %>
 </pre>
-set banner container (default list[ul/li])
+set banner container (default list [possibile: div, p, ...])
 
 Copyright (c) 2012 [Damiano Giacomello], released under the New BSD License

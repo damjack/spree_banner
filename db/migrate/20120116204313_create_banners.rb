@@ -1,6 +1,6 @@
 class CreateBanners < ActiveRecord::Migration
   def change
-    create_table :spree_banners do |t|
+    create_table :banners do |t|
       t.string :title, :url
       t.string :category
       t.integer :position
