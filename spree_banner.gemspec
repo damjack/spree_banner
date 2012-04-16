@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_auth'
   s.add_dependency 'formtastic'
   s.add_dependency 'paperclip', '>= 2.5.0'
+  s.add_dependency 'aws-sdk', '~> 1.3.4'
   
   s.add_development_dependency 'rspec-rails'
 end

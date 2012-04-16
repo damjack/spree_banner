@@ -44,7 +44,8 @@ GIT
 PATH
   remote: .
   specs:
-    spree_banner (1.0.2)
+    spree_banner (1.0.3)
+      aws-sdk (~> 1.3.4)
       formtastic
       paperclip (>= 2.5.0)
       spree_auth
@@ -94,22 +95,17 @@ GEM
       multi_json (~> 1.0)
     acts_as_list (0.1.4)
     arel (2.2.1)
+    aws-sdk (1.3.9)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     braintree (2.14.0)
       builder (>= 2.0.0)
     builder (3.0.0)
     cancan (1.6.7)
-    capybara (1.0.1)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (~> 2.0)
-      xpath (~> 0.1.4)
-    childprocess (0.3.0)
-      ffi (~> 1.0.6)
     cocaine (0.2.1)
-    database_cleaner (0.6.7)
     deface (0.8.0)
       nokogiri (~> 1.5.0)
       rails (>= 3.0.9)
@@ -119,15 +115,14 @@ GEM
       warden (~> 1.0.3)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    factory_girl (1.3.3)
-    faker (1.0.0)
-      i18n (~> 0.4)
     ffaker (1.12.1)
-    ffi (1.0.11)
     formtastic (2.0.2)
       rails (~> 3.0)
     highline (1.6.8)
     hike (1.2.1)
+    httparty (0.8.2)
+      multi_json
+      multi_xml
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
@@ -150,6 +145,7 @@ GEM
     money (3.7.1)
       i18n (~> 0.4)
     multi_json (1.0.4)
+    multi_xml (0.4.2)
     nested_set (1.6.8)
       activerecord (>= 3.0.0)
       railties (>= 3.0.0)
@@ -203,12 +199,6 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
-    rubyzip (0.9.5)
-    selenium-webdriver (2.16.0)
-      childprocess (>= 0.2.5)
-      ffi (~> 1.0.9)
-      multi_json (~> 1.0.4)
-      rubyzip
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -222,23 +212,18 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
+    uuidtools (2.1.2)
     warden (1.0.6)
       rack (>= 1.0)
-    xpath (0.1.4)
-      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (= 1.0.1)
-  database_cleaner (= 0.6.7)
-  factory_girl
-  faker
+  aws-sdk (~> 1.3.4)
   formtastic
-  nokogiri
   paperclip (>= 2.5.0)
-  rspec-rails (= 2.6.1)
+  rspec-rails
   spree!
   spree_banner!
   sqlite3

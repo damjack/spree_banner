@@ -1,7 +1,7 @@
 SpreeBanner
 ===================
 
-Add banner for Spree Commerce Shop
+Add banner for Spree Commerce Shop [compatible with Amazon S3]
 
 
 Basic Installation
