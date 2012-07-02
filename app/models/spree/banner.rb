@@ -13,7 +13,7 @@ module Spree
                       :thumbnail => "-gravity center"
                 }
     after_post_process :find_dimensions
-    
+    attr_accessible :category, :url, :position, :attachment_width, :attachment_height, :enabled, :attachment
     validates_presence_of :category, :attachment_width, :attachment_height
     validates_attachment_presence :attachment
     validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "deve essere JPG, JPEG o PNG"
