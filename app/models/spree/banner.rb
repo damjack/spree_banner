@@ -21,12 +21,12 @@ module Spree
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
     
     # Load S3 settings
-    if (!YAML.load_file(Rails.root.join('config', 's3.yml'))[Rails.env].blank?)
+    if (FileTest.exist?(Rails.root.join('config', 's3.yml')) && !YAML.load_file(Rails.root.join('config', 's3.yml'))[Rails.env].blank?)
       S3_OPTIONS = {
               :storage => 's3',
               :s3_credentials => Rails.root.join('config', 's3.yml')
             }
-    elsif (ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET'])
+    elsif (FileTest.exist?(Rails.root.join('config', 's3.yml')) && ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET'])
       S3_OPTIONS = {
               :storage => 's3',
               :s3_credentials => {
