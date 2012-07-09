@@ -1,6 +1,7 @@
 module Spree
   class Banner < ActiveRecord::Base
-  
+    attr_accessible :title, :url, :category, :position, :enabled, :attachment, :attachment_width, :attachment_height
+        
     has_attached_file :attachment,
                 :url  => "/spree/banner/:id/:style_:basename.:extension",
                 :path => ":rails_root/public/spree/banner/:id/:style_:basename.:extension",
