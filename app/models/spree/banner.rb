@@ -13,12 +13,13 @@ module Spree
                 :convert_options => {
                       :thumbnail => "-gravity center"
                 }
+    
     after_post_process :find_dimensions
     
     validates_presence_of :category, :attachment_width, :attachment_height
     validates_attachment_presence :attachment
-    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "deve essere JPG, JPEG o PNG"
-    #process_in_background :image UTILE MA OCCORRE ATTIVARE ANCHE LA GEMMA DELAYED-PAPERCLIP
+    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => "deve essere JPG, JPEG, PNG o GIF"
+    
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
     
     # Load S3 settings
