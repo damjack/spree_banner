@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.author            = 'Damiano Giacomello'
   s.email             = 'damiano.giacomello@diginess.it'
   # s.homepage          = 'http://www.rubyonrails.org'
-  # s.rubyforge_project = 'actionmailer'
 
   #s.files         = `git ls-files`.split("\n")
   s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*', 'db/**/*', 'config/**/*']
@@ -17,7 +16,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core'
-  s.add_dependency 'spree_auth'
+  
   s.add_dependency 'formtastic'
   s.add_dependency 'paperclip'
   s.add_dependency 'aws-sdk'

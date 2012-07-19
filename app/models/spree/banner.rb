@@ -1,23 +1,25 @@
 module Spree
   class Banner < ActiveRecord::Base
-  
+    attr_accessible :title, :url, :category, :position, :enabled, :attachment, :attachment_width, :attachment_height
+    
     has_attached_file :attachment,
                 :url  => "/spree/banner/:id/:style_:basename.:extension",
                 :path => ":rails_root/public/spree/banner/:id/:style_:basename.:extension",
                 #:default_url => "/missing/:style.jpg",
-                :styles => {
+                :styles => lambda {|a|
                       :thumbnail => "80x80#",
-                      :custom => Proc.new { |instance| "#{instance.attachment_width}x#{instance.attachment_height}#" }
+                      :custom => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#"
                 },
                 :convert_options => {
                       :thumbnail => "-gravity center"
                 }
+    
     after_post_process :find_dimensions
-    attr_accessible :category, :url, :position, :attachment_width, :attachment_height, :enabled, :attachment
+    
     validates_presence_of :category, :attachment_width, :attachment_height
     validates_attachment_presence :attachment
-    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "deve essere JPG, JPEG o PNG"
-    #process_in_background :image UTILE MA OCCORRE ATTIVARE ANCHE LA GEMMA DELAYED-PAPERCLIP
+    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => "deve essere JPG, JPEG, PNG o GIF"
+    
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
     
     # Load S3 settings

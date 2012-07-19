@@ -6,10 +6,10 @@ class CreateBanners < ActiveRecord::Migration
       t.integer :position
       t.boolean :enabled
       
-      t.string   :attachment_content_type, :attachment_file_name, :attachment_content_type
+      t.string   :attachment_content_type, :attachment_file_name
       t.datetime :attachment_updated_at
       t.integer  :attachment_width, :attachment_height, :default => 100
-      t.integer  :attachment_size, :position
+      t.integer  :attachment_size
       t.string   :type, :limit => 75
       
       t.timestamps
