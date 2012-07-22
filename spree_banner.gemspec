@@ -2,14 +2,12 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_banner'
-  s.version     = '0.70.5'
+  s.version     = '0.70.6'
   s.summary     = 'Extension to manage banner for you Spree Shop'
   s.required_ruby_version = '>= 1.8.7'
 
-  s.author            = 'Damiano Giacomello'
-  s.email             = 'damiano.giacomello@diginess.it'
-  # s.homepage          = 'http://www.rubyonrails.org'
-  # s.rubyforge_project = 'actionmailer'
+  s.author      = 'Damiano Giacomello'
+  s.email       = 'damiano.giacomello@diginess.it'
 
   #s.files         = `git ls-files`.split("\n")
   s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*', 'db/**/*', 'config/**/*']
