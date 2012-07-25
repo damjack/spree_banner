@@ -23,23 +23,23 @@ module Spree
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
     
     # Load S3 settings
-    if (!YAML.load_file(Rails.root.join('config', 's3.yml'))[Rails.env].blank?)
+    if (FileTest.exist?(Rails.root.join('config', 's3.yml')) && !YAML.load_file(Rails.root.join('config', 's3.yml'))[Rails.env].blank?)
       S3_OPTIONS = {
-              :storage => 's3',
-              :s3_credentials => Rails.root.join('config', 's3.yml')
-            }
-    elsif (ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET'])
+        :storage => 's3',
+        :s3_credentials => Rails.root.join('config', 's3.yml')
+      }
+    elsif (FileTest.exist?(Rails.root.join('config', 's3.yml')) && ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET'])
       S3_OPTIONS = {
-              :storage => 's3',
-              :s3_credentials => {
-                :access_key_id     => ENV['S3_KEY'],
-                :secret_access_key => ENV['S3_SECRET']
-              },
-              :bucket => ENV['S3_BUCKET']
-            }
-    else
-      S3_OPTIONS = { :storage => 'filesystem' }
-    end
+        :storage => 's3',
+        :s3_credentials => {
+          :access_key_id     => ENV['S3_KEY'],
+          :secret_access_key => ENV['S3_SECRET']
+          },
+          :bucket => ENV['S3_BUCKET']
+        }
+      else
+        S3_OPTIONS = { :storage => 'filesystem' }
+      end
     
     attachment_definitions[:attachment] = (attachment_definitions[:attachment] || {}).merge(S3_OPTIONS)
     
