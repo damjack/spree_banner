@@ -20,7 +20,7 @@ module Spree
       
       private
       def location_after_save
-        admin_banners_url(@banner)
+        edit_admin_banner_url(@banner)
       end
       
     end

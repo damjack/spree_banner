@@ -59,21 +59,20 @@ en:
         one: Banner
         many: Banners
 
-  banner:
-    one: Banner
-    many: Banners
-    enable: Enable?
-    enabled: Enable?
-    category: Category
-    no_image: No Image Yet
-    attachment_width: Width image
-    attachment_height: Height image
-    position: Position (if there are other banners with the same category)
-    url: Link to product or taxonomy or to external website
-    image:
-      one: Image
-      many: Images
-    banner_desc: Manage banner.
-    new_banner: New banner
-    editing_banner: Edit banner
-    confirm_delete: Are you sure?
+  banner: "Banner"
+  banners: "Banners"
+  enable: Enable?
+  enabled: Enable?
+  category: Category
+  no_image: No Image Yet
+  attachment_width: Width image
+  attachment_height: Height image
+  position: Position (if there are other banners with the same category)
+  url: Link to product or taxonomy or to external website
+  image:
+    one: Image
+    many: Images
+  banner_desc: Manage banner.
+  new_banner: New banner
+  editing_banner: Edit banner
+  confirm_delete: Are you sure?

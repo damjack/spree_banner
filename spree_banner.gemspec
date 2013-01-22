@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_banner'
-  s.version     = '1.1.2'
+  s.version     = '1.1.3'
   s.summary     = 'Extension to manage banner for you Spree Shop'
   s.required_ruby_version = '>= 1.8.7'
 
@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'spree_core'
   
-  s.add_dependency 'formtastic'
   s.add_dependency 'paperclip'
   s.add_dependency 'aws-sdk'
   

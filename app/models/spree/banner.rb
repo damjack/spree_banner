@@ -31,12 +31,6 @@ module Spree
       Spree::Banner.attachment_definitions[:attachment][:bucket] = Spree::Config[:s3_bucket]
       Spree::Banner.attachment_definitions[:attachment][:s3_protocol] = Spree::Config[:s3_protocol] unless Spree::Config[:s3_protocol].blank?
     end
-
-    Spree::Banner.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:attachment_styles])
-    Spree::Banner.attachment_definitions[:attachment][:path] = Spree::Config[:attachment_path]
-    Spree::Banner.attachment_definitions[:attachment][:url] = Spree::Config[:attachment_url]
-    Spree::Banner.attachment_definitions[:attachment][:default_url] = Spree::Config[:attachment_default_url]
-    Spree::Banner.attachment_definitions[:attachment][:default_style] = Spree::Config[:attachment_default_style]
         
     def initialize(*args)
       super(*args)

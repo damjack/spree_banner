@@ -9,7 +9,7 @@ Basic Installation
 
 1. Add the following to your Gemfile
 <pre>
-  gem 'spree_banner', '~> 1.1.1'
+  gem 'spree_banner', '~> 1.1.3'
 </pre>
 2. Run `bundle install`
 3. To copy and apply migrations run:
@@ -39,8 +39,8 @@ limits the number of banner shown to 10 (default 1)
 </pre>
 set banner class (default banner)
 <pre>
-	<%= insert_banner(:style => "your_container") %>
+	<%= insert_banner(:list => true/false) %>
 </pre>
-set banner container (default list [possibile: div, p, ...])
+set banner container (default false is DIV)
 
 Copyright (c) 2012 [Damiano Giacomello], released under the New BSD License

@@ -59,21 +59,21 @@ it:
         one: Banner
         many: Banners
 
-  banner:
-    one: Banner
-    many: Banners
-    enable: Attivo?
-    category: Categoria
-    no_image: Nessuna immagine caricata
-    attachment_width: Larghezza immagine banner
-    attachment_height: Altezza immagine banner
-    position: Posizione (se esistono altri banner con la stessa categoria)
-    enabled: Attivo?
-    url: Link a prodotto o tassonomia o a sito esterno
-    image:
-      one: Immagine
-      many: Immagini
-    banner_desc: Gestione banner.
-    new_banner: Nuovo banner
-    editing_banner: Modifica banner
-    confirm_delete: Sei sicuro?
+  banner: "Banner"
+  banners: "Banners"
+  new_banner: "Nuovo Banner"
+  enable: Attivo?
+  category: Categoria
+  no_image: Nessuna immagine caricata
+  attachment_width: Larghezza immagine banner
+  attachment_height: Altezza immagine banner
+  position: Posizione (se esistono altri banner con la stessa categoria)
+  enabled: Attivo?
+  url: Link a prodotto o tassonomia o a sito esterno
+  image:
+    one: Immagine
+    many: Immagini
+  banner_desc: Gestione banner.
+  new_banner: Nuovo banner
+  editing_banner: Modifica banner
+  confirm_delete: Sei sicuro?

@@ -3,21 +3,21 @@ module Spree
 
     def insert_banner(params={})
       # max items show for list
-      max = params[:max] || 1
+      params[:max] ||= 1
       # category items show
-      category = params[:category] || ""
+      params[:category] ||= "home"
       # class items show
-      cl = params[:class] || "banner"
+      params[:class] ||= "banner"
       # style items show
-      style = params[:style] || "list"
-      banner = Banner.enable(category).limit(max)
+      params[:list] ||= false
+      banner = Spree::Banner.enable(params[:category]).limit(params[:max])
       if !banner.blank?
         banner = banner.sort_by { |ban| ban.position }
         
-        if (style == "list")
-          content_tag(:ul, raw(banner.map do |ban| content_tag(:li, link_to(image_tag(ban.attachment.url(:custom)), ban.url), :class => cl) end.join) )
+        if (params[:list])
+          content_tag(:ul, banner.map{|ban| content_tag(:li, link_to(image_tag(ban.attachment.url(:custom)), (ban.url.blank? ? "javascript: void(0)" : ban.url)), :class => params[:class])}.join().html_safe )
         else
-          raw(banner.map do |ban| content_tag(style.to_sym, link_to(image_tag(ban.attachment.url(:custom)), ban.url), :class => cl) end.join)
+          banner.map{|ban| content_tag(:div, link_to(image_tag(ban.attachment.url(:custom)), (ban.url.blank? ? "javascript: void(0)" : ban.url)), :class => params[:class])}.join().html_safe
         end
         
       end
