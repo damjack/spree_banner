@@ -1,6 +1,6 @@
-<div data-hook="admin_slideshow_form_fields">
+<div data-hook="admin_banner_form_fields">
 	<div class="clearfix">
-		<div class="left" data-hook="admin_product_form_left">
+		<div class="left" data-hook="admin_banner_form_left">
 			<%= f.field_container :category do %>
 				<%= f.label :category, t(:category) %> <span class="required">*</span><br />
 				<%= f.text_field :category, :class => 'fullwidth title' %>
@@ -19,7 +19,7 @@
 				<%= f.error_message_on :attachment %>
 			<% end %>
 		</div>
-		<div class="right" data-hook="admin_product_form_right">
+		<div class="right" data-hook="admin_banner_form_right">
 			<%= f.field_container :attachment_width do %>
 				<%= f.label :attachment_width, t(:attachment_width) %> <span class="required">*</span><br />
 				<%= f.text_field :attachment_width, :class => 'fullwidth title' %>

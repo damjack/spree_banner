@@ -1,21 +1,19 @@
 module Spree
   module Admin
     class BannersController < ResourceController
-      before_filter :load_data
+            
+      def show
+        redirect_to(:action => :edit)
+      end
       
       def update_positions
         params[:positions].each do |id, index|
-          Spree::Banner.update_all(['position=?', index], ['id=?', id])
+          Spree::Banner.where(:id => id).update_all(:position => index)
         end
 
         respond_to do |format|
-          format.html { redirect_to admin_banners_url() }
           format.js  { render :text => 'Ok' }
         end
-      end
-      
-      def load_data
-        @banners = Spree::Banner.all
       end
       
       private

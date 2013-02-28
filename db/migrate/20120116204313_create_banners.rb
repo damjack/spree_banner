@@ -8,7 +8,7 @@ class CreateBanners < ActiveRecord::Migration
       
       t.string   :attachment_content_type, :attachment_file_name
       t.datetime :attachment_updated_at
-      t.integer  :attachment_width, :attachment_height, :default => 100
+      t.integer  :attachment_width, :attachment_height
       t.integer  :attachment_size
       
       t.timestamps

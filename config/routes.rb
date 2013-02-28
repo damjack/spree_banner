@@ -5,5 +5,6 @@ Spree::Core::Engine.routes.prepend do
         post :update_positions
       end
     end
+    resource :banner_settings
   end
 end

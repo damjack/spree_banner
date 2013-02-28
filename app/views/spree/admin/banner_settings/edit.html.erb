@@ -1,0 +1,48 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<h1><%= t(:banner_settings) %></h1>
+
+<p><span class="warning"><%= t(:banner_settings_warning) %></span></p>
+
+<%= form_tag admin_banner_settings_path, :method => :put do %>
+
+  <p data-hook="banner_path">
+    <label>
+      <%= label_tag 'preferences[banner_path]', t(:banner_path) %>
+      <%= preference_field_tag 'preferences[banner_path]', Spree::Config[:banner_path], :type => :string %>
+    </label>
+  </p>
+
+  <p data-hook="banner_default_url">
+    <label>
+      <%= label_tag 'preferences[banner_default_url]', t(:banner_default_url) %>
+      <%= preference_field_tag 'preferences[banner_default_url]', Spree::Config[:banner_default_url], :type => :string %>
+    </label>
+  </p>
+
+  <p data-hook="banner_default_style">
+    <label>
+      <%= label_tag 'preferences[banner_default_style]', t(:banner_default_style) %>
+      <%= collection_select 'preferences', 'banner_default_style', @styles, :first, :first, {:selected => Spree::Config[:banner_default_style] } %> 
+    </label>
+  </p>
+
+  <div id="banner_styles" data-hook="banner_styles">
+    <h2><%= t(:banner_styles) %></h2>
+    <ul id="styles_list">
+      <% @styles.each do |style_name, style_value| %>
+        <li>
+          <%= label_tag "banner_styles[#{style_name}]", style_name %>
+          <%= text_field_tag "banner_styles[#{style_name}]", style_value %>
+          <a href="#" alt="Destroy" class="destroy_banner_style">x</a>
+        </li>
+      <% end %>
+    </ul>
+    <p><a href="#" alt="Add Style" class="add_banner_style"><%= t(:add_new_style) %></a></p>
+  </div>
+
+  <p class="form-buttons" data-hook="buttons">
+    <%= button t(:update) %>
+  </p>
+
+<% end %>

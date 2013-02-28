@@ -1,0 +1,10 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<h1><%= t(:banner_settings) %></h1>
+
+<h4><%= t(:banner_path) %>: <%= Spree::Config[:banner_path] %></h4>
+<h4><%= t(:banner_default_url) %>: <%= Spree::Config[:banner_default_url] %></h4>
+<h4><%= t(:banner_default_style) %>: <%= Spree::Config[:banner_default_style] %></h4>
+<h4><%= t(:defined_paperclip_styles) %>: <%= @styles_list %></h4>
+
+<%= link_to_with_icon 'edit', t(:edit), edit_admin_banner_settings_path, :id => 'admin_banner_settings_link' %>

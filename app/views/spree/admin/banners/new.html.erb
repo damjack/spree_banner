@@ -1,16 +1,8 @@
-<h1><%= t("banner.new_banner") %></h1>
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner } %>
-
-<%= semantic_form_for([:admin, @banner], :html => { :enctype => "multipart/form-data" }) do |f| %>
-  <%= render :partial => "form", :locals => { :f => f } %>
-  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
-<% end %>
-
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner } %>
 
 <%= form_for [:admin, @banner], :html => { :multipart => true } do |f| %>
-<fieldset data-hook="new_slideshow_type">
-	<div class="clearfix" data-hook="new_product_attrs">
+<fieldset data-hook="new_banner">
+	<div class="clearfix" data-hook="new_banner_attrs">
 		<div class="left">
 			<%= f.field_container :category do %>
 				<%= f.label :category, t(:category) %> <span class="required">*</span><br />

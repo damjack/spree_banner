@@ -1,1 +1,1 @@
-//= require admin/spree_core
+//= require admin/banner_settings
