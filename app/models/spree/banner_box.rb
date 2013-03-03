@@ -1,0 +1,50 @@
+module Spree
+  class BannerBox < ActiveRecord::Base
+    attr_accessible :presentation, :url, :category, :position, :enabled, :attachment
+    
+    has_attached_file :attachment,
+                :url  => "/spree/banners/:id/:style_:basename.:extension",
+                :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
+                :styles => ->(a) {{
+                  :mini => "80x80#",
+                  :small => "120x120#",
+                  :custom => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#"
+                }},
+                :convert_options => { :all => '-strip -auto-orient' }
+    # save the w,h of the original image (from which others can be calculated)
+    # we need to look at the write-queue for images which have not been saved yet
+    after_post_process :find_dimensions
+    
+    validates_presence_of :category
+    validates_attachment_presence :attachment
+    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => "deve essere JPG, JPEG, PNG o GIF"
+    
+    scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
+    
+    # Load user defined paperclip settings
+    include Spree::Core::S3Support
+    supports_s3 :attachment
+    
+    Spree::BannerBox.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:banner_styles])
+    Spree::BannerBox.attachment_definitions[:attachment][:path] = Spree::Config[:banner_path]
+    Spree::BannerBox.attachment_definitions[:attachment][:url] = Spree::Config[:banner_url]
+    Spree::BannerBox.attachment_definitions[:attachment][:default_url] = Spree::Config[:banner_default_url]
+    Spree::BannerBox.attachment_definitions[:attachment][:default_style] = Spree::Config[:banner_default_style]
+        
+    def initialize(*args)
+      super(*args)
+      last_banner = BannerBox.last
+      self.position = last_banner ? last_banner.position + 1 : 0
+    end
+    
+    def find_dimensions
+      temporary = attachment.queued_for_write[:original]
+      filename = temporary.path unless temporary.nil?
+      filename = attachment.path if filename.blank?
+      geometry = Paperclip::Geometry.from_file(filename)
+      self.attachment_width = geometry.width
+      self.attachment_height = geometry.height
+    end
+    
+  end
+end

@@ -20,18 +20,6 @@
 			<% end %>
 		</div>
 		<div class="right" data-hook="admin_banner_form_right">
-			<%= f.field_container :attachment_width do %>
-				<%= f.label :attachment_width, t(:attachment_width) %> <span class="required">*</span><br />
-				<%= f.text_field :attachment_width, :class => 'fullwidth title' %>
-				<%= f.error_message_on :attachment_width %>
-			<% end %>
-
-			<%= f.field_container :attachment_height do %>
-				<%= f.label :attachment_height, t(:attachment_height) %> <span class="required">*</span><br />
-				<%= f.text_field :attachment_height, :class => 'fullwidth title' %>
-				<%= f.error_message_on :attachment_height %>
-			<% end %>
-
 			<%= f.field_container :position do %>
 				<%= f.label :position, t(:position) %><br />
 				<%= f.text_field :position, :class => 'fullwidth title' %>
