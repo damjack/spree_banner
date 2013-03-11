@@ -1,29 +1,36 @@
 <div class="toolbar" data-hook="toolbar">
-  <ul class="actions">
-    <li id="new_banner_link">
-      <%= button_link_to t(:new_banner), new_object_url, {:remote => true, :icon => 'add', :id => 'admin_new_banner'} %>
-    </li>
-  </ul>
-  <br class="clear" />
+	<ul class="actions">
+		<li id="new_banner_link">
+			<%= button_link_to t(:new_banner), new_object_url, {:remote => true, :icon => 'add', :id => 'admin_new_banner'} %>
+		</li>
+	</ul>
+	<br class="clear" />
 </div>
 
 <h1><%= t(:listing_banners) %></h1>
 
 <div id="new_banner" data-hook></div>
 
-<table class="index" id="listing_banners">
-  <tr data-hook="admin_banners_index_headers">
-    <th><%= t(:category) %></th>
-    <th><%= t(:enable) %></th>
-    <th data-hook="admin_banners_index_header_actions"></th>
-  </tr>
-<% @banners.each do |banner| %>
-  <tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows">
-    <td><%= banner.category %></td>
-	<td><%= icon('tick') if banner.enabled %></td>
-    <td class="actions" data-hook="admin_banners_index_row_actions">
-      <%= link_to_edit banner, :class => 'edit' %>&nbsp;<%= link_to_delete banner %>
-    </td>
-  </tr>
-<% end %>
+<table class="index sortable" data-hook="listing_banners" data-sortable-link="<%= update_positions_admin_banners_url() %>">
+	<tr data-hook="admin_banners_index_headers">
+		<th><%= t(:thumbnail) %></th>
+		<th><%= t(:category) %></th>
+		<th><%= t(:enable) %></th>
+		<th data-hook="admin_banners_index_header_actions"></th>
+	</tr>
+	<% @banners.each do |banner| %>
+	<tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows">
+		<td>
+			<span class="handle"></span>
+			<%= link_to image_tag(banner.attachment.url(:mini)), banner.attachment.url(:small) %>
+		</td>
+		<td><%= banner.category %></td>
+		<td><%= icon('tick') if banner.enabled %></td>
+		<td class="actions" data-hook="admin_banners_index_row_actions">
+			<%= link_to_edit banner, :class => 'edit' %>
+			&nbsp;
+			<%= link_to_delete banner %>
+		</td>
+	</tr>
+	<% end %>
 </table>

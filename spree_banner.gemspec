@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_banner'
-  s.version     = '1.1.5'
+  s.version     = '1.1.6'
   s.summary     = 'Extension to manage banner for you Spree Shop'
   s.required_ruby_version = '>= 1.8.7'
 

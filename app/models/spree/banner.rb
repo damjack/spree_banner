@@ -3,18 +3,10 @@ module Spree
     attr_accessible :title, :url, :category, :position, :enabled, :attachment
     
     has_attached_file :attachment,
-                :url  => "/spree/banners/:id/:style_:basename.:extension",
-                :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
-                :styles => lambda {|a| {
-                  :mini => "80x80#",
-                  :small => "120x120#",
-                  :custom => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#"
-                }},
-                :convert_options => {
-                  :mini => "-gravity center",
-                  :small => "-gravity center",
-                  :custom => "-gravity center"
-                }
+                      :styles => { :mini => '80x80#', :small => '120x120#' },
+                      :url  => "/spree/banners/:id/:style_:basename.:extension",
+                      :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
+                      :convert_options => { :all => '-strip' }
     
     after_post_process :find_dimensions
     
