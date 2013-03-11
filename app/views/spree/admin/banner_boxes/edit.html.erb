@@ -1,6 +1,17 @@
+<%= render :partial => 'spree/admin/shared/banner_box_sub_menu' %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to t(:back_to_banner_boxes_list), admin_banner_boxes_url, :icon => 'icon-arrow-left' %></li>
+  <li id="new_banner_box_link">
+    <%= button_link_to t(:new_banner_box), new_object_url, { :remote => true, :icon => 'icon-plus', :id => 'admin_new_banner_box' } %>
+  </li>
+<% end %>
+
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner_box } %>
 
-<%= form_for([:admin, @banner_box], :html => { :multipart => true }) do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-  <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+<%= form_for [:admin, @banner_box], :method => :put, :html => { :multipart => true } do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
 <% end %>

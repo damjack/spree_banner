@@ -5,7 +5,7 @@ module Spree
     has_attached_file :attachment,
                 :url  => "/spree/banners/:id/:style_:basename.:extension",
                 :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
-                :styles => ->(a) {{
+                :styles => lambda {|a|{
                   :mini => "80x80#",
                   :small => "120x120#",
                   :custom => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#"
@@ -35,6 +35,22 @@ module Spree
       super(*args)
       last_banner = BannerBox.last
       self.position = last_banner ? last_banner.position + 1 : 0
+    end
+    
+    # for adding banner_boxes which are closely related to existing ones
+    # define "duplicate_extra" for site-specific actions, eg for additional fields
+    def duplicate
+      p = self.dup
+      p.category = 'COPY OF ' + category
+      p.created_at = p.updated_at = nil
+      p.url = url
+      
+      image_dup = lambda { |i| j = i.dup; j.attachment = i.attachment.clone; j }
+
+      # allow site to do some customization
+      p.send(:duplicate_extra, self) if p.respond_to?(:duplicate_extra)
+      p.save!
+      p
     end
     
     def find_dimensions

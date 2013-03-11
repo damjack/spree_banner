@@ -1,9 +1,9 @@
 module Spree
   module Admin
     class BannerBoxSettingsController < Spree::Admin::BaseController
+      
       def show
-        styles = ActiveSupport::JSON.decode(Spree::Config[:banner_styles])
-        @styles_list = styles.collect { |k, v| k }.join(", ")
+        redirect_to( :action => :edit )
       end
 
       def edit
@@ -19,7 +19,7 @@ module Spree
         respond_to do |format|
           format.html {
             flash[:notice] = t(:banner_settings_updated)
-            redirect_to admin_banner_settings_path
+            redirect_to edit_admin_banner_box_settings_path
           }
         end
       end

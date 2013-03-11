@@ -1,9 +1,10 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner_box } %>
 
 <%= form_for [:admin, @banner_box], :html => { :multipart => true } do |f| %>
-<fieldset data-hook="new_banner">
-	<div class="clearfix" data-hook="new_banner_attrs">
-		<div class="left">
+<fieldset data-hook="new_banner_box">
+	<legend align="center"><%= t(:new_banner_box) %></legend>
+	<div data-hook="new_banner_box_attrs" class="row">
+		<div class="left alpha eight columns">
 			<%= f.field_container :category do %>
 				<%= f.label :category, t(:category) %> <span class="required">*</span><br />
 				<%= f.text_field :category, :class => 'fullwidth title' %>
@@ -15,30 +16,19 @@
 				<%= f.text_field :url, :class => 'fullwidth title' %>
 				<%= f.error_message_on :url %>
 			<% end %>
-
+		</div>
+		
+		<div class="right omega four columns">
 			<%= f.field_container :attachment do %>
 				<%= f.label :attachment, t(:attachment) %><br />
 				<%= f.file_field :attachment %>
 				<%= f.error_message_on :attachment %>
 			<% end %>
-		</div>
-		<div class="right">
-			<%= f.field_container :attachment_width do %>
-				<%= f.label :attachment_width, t(:attachment_width) %> <span class="required">*</span><br />
-				<%= f.text_field :attachment_width, :class => 'fullwidth title' %>
-				<%= f.error_message_on :attachment_width %>
-			<% end %>
-
-			<%= f.field_container :attachment_height do %>
-				<%= f.label :attachment_height, t(:attachment_height) %> <span class="required">*</span><br />
-				<%= f.text_field :attachment_height, :class => 'fullwidth title' %>
-				<%= f.error_message_on :attachment_height %>
-			<% end %>
-
-			<%= f.field_container :position do %>
-				<%= f.label :position, t(:position) %><br />
-				<%= f.text_field :position, :class => 'fullwidth title' %>
-				<%= f.error_message_on :position %>
+			
+			<%= f.field_container :presentation do %>
+				<%= f.label :presentation, t(:alt_text) %><br />
+				<%= f.text_field :presentation, :class => 'fullwidth' %>
+				<%= f.error_message_on :presentation %>
 			<% end %>
 
 			<%= f.field_container :enabled do %>

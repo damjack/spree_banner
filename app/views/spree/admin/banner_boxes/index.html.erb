@@ -1,29 +1,63 @@
-<div class="toolbar" data-hook="toolbar">
-  <ul class="actions">
-    <li id="new_banner_link">
-      <%= button_link_to t(:new_banner_box), new_object_url, {:remote => true, :icon => 'add', :id => 'admin_new_banner'} %>
-    </li>
-  </ul>
-  <br class="clear" />
-</div>
-
-<h1><%= t(:listing_banner_boxes) %></h1>
-
-<div id="new_banner" data-hook></div>
-
-<table class="index" id="listing_banners">
-  <tr data-hook="admin_banners_index_headers">
-    <th><%= t(:category) %></th>
-    <th><%= t(:enable) %></th>
-    <th data-hook="admin_banners_index_header_actions"></th>
-  </tr>
-<% @banner_boxes.each do |banner| %>
-  <tr id="<%= spree_dom_id banner %>" data-hook="admin_banners_index_rows">
-    <td><%= banner.category %></td>
-	<td><%= icon('tick') if banner.enabled %></td>
-    <td class="actions" data-hook="admin_banners_index_row_actions">
-      <%= link_to_edit banner, :class => 'edit' %>&nbsp;<%= link_to_delete banner %>
-    </td>
-  </tr>
+<% content_for :page_title do %>
+	<%= t(:listing_banner_boxes) %>
 <% end %>
+
+<% content_for :page_actions do %>
+	<div class="toolbar" data-hook="toolbar">
+		<ul class="actions header-action-links inline-menu">
+			<li id="new_banner_box_link">
+				<%= button_link_to t(:new_banner_box), new_object_url, { :remote => true, :icon => 'icon-plus', :id => 'admin_new_banner_box' } %>
+			</li>
+		</ul>
+	</div>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/banner_box_sub_menu' %>
+
+<div id="new_banner_box" data-hook></div>
+
+<% if @collection.any? %>
+<table class="index sortable" id="listing_banner_boxes" data-sortable-link="<%= update_positions_admin_banner_boxes_url() %>">
+	<colgroup>
+	<col style="width: 5%">
+	<col style="width: 15%;">
+	<col style="width: 10%;">
+	<col style="width: 10%;">
+	<col style="width: 17%;">
+</colgroup>
+<thead>
+	<tr data-hook="admin_products_index_headers">
+		<th colspan="2"><%= t(:thumbnail) %></th>
+		<th><%= t(:category) %></th>
+		<th><%= t(:url) %></th>
+		<th data-hook="admin_products_index_header_actions" class="actions"></th>
+	</tr>  
+</thead>  
+<tbody>
+	<% @collection.each do |banner_box| %>
+	<tr id="<%= spree_dom_id banner_box %>" data-hook="admin_banner_boxes_index_rows" class="<%= cycle('odd', 'even') %>">
+		<td class="no-border">
+			<span class="handle"></span>
+		</td>
+		<td class="align-center"><%= image_tag(banner_box.attachment(:mini)) %></td>
+		<td class="align-center"><%= banner_box.category rescue '' %></td>
+		<td class="align-center"><%= banner_box.url rescue '' %></td>
+		<td class="actions" data-hook="admin_products_index_row_actions">
+			<%= link_to_edit banner_box, :no_text => true, :class => 'edit' %>
+			&nbsp;
+			<%= link_to_clone banner_box, :no_text => true, :class => 'clone' %>
+            &nbsp;
+			<%= link_to_delete banner_box, :no_text => true %>
+		</td>
+	</tr>
+	<% end %>
+</tbody>
 </table>
+<% else %>
+<div class="no-objects-found">
+	<%= t(:no_results) %>
+</div>
+<% end %>
+
+<%= paginate @collection %>
+
