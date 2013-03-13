@@ -22,16 +22,14 @@ Example
 
 1. add banner helper method in your view:
 <pre>
-	<%= insert_banner_box %>
+	<%= insert_banner_box(:category => "my_category") %>
 </pre>
 and add banner in the admin section
 2. Additional options:
 <pre>
-	:category => "my_category"
+	:class => "my_class"
+	:style => "my_style"
+	:list = true|false
 </pre>
-displays banner for which the category column, dafault is ""
-limits the number of banner shown to 10 (default 1)
-set banner class (default banner)
-set banner container (default false is DIV)
 
 Copyright (c) 2012 [Damiano Giacomello], released under the New BSD License

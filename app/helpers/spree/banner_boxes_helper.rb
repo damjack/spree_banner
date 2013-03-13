@@ -2,12 +2,11 @@ module Spree
   module BannerBoxesHelper
 
     def insert_banner_box(params={})
-      params[:max] ||= 1
       params[:category] ||= "home"
       params[:class] ||= "banner"
       params[:style] ||= "small"
       params[:list] ||= false
-      @@banner = Spree::BannerBox.enable(params[:category]).limit(params[:max])
+      @@banner = Spree::BannerBox.enable(params[:category])
       if @@banner.blank?
         return ''
       end

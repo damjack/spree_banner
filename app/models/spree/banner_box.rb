@@ -17,7 +17,7 @@ module Spree
     
     validates_presence_of :category
     validates_attachment_presence :attachment
-    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => "deve essere JPG, JPEG, PNG o GIF"
+    validates_attachment_content_type :attachment, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/x-png', 'image/pjpeg'], :message => I18n.t(:images_only)
     
     scope :enable, lambda { |category| {:conditions => {:enabled => true, :category => category}} }
     
@@ -44,8 +44,7 @@ module Spree
       p.category = 'COPY OF ' + category
       p.created_at = p.updated_at = nil
       p.url = url
-      
-      image_dup = lambda { |i| j = i.dup; j.attachment = i.attachment.clone; j }
+      p.attachment = attachment
 
       # allow site to do some customization
       p.send(:duplicate_extra, self) if p.respond_to?(:duplicate_extra)

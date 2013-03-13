@@ -45,7 +45,7 @@
 		<td class="actions" data-hook="admin_products_index_row_actions">
 			<%= link_to_edit banner_box, :no_text => true, :class => 'edit' %>
 			&nbsp;
-			<%= link_to_clone banner_box, :no_text => true, :class => 'clone' %>
+			<%= link_to_with_icon 'icon-copy', t(:clone), clone_admin_banner_box_url(banner_box), :no_text => true, :class => 'clone' %>
             &nbsp;
 			<%= link_to_delete banner_box, :no_text => true %>
 		</td>

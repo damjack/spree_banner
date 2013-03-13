@@ -1,4 +1,27 @@
 it:
+  images_only: "deve essere JPG, JPEG, PNG o GIF"
+  banner_box_settings: Impostazioni Banner
+  add_new_banner_style: "Aggiungi nuovo stile dei Banner"
+  banner_box_settings_warning: "Sarà necessario rigenerare le miniature dopo aver aggiornato gli stili di paperclip delle Slide, col comando rake paperclip:refresh:thumbnails CLASS=Spree::Banner"
+  banner_settings_description: "Descrizione Impostazioni Banner"
+  banner_settings_updated: "Impostazioni Banner aggiornate con successo."
+  banner_default_style: "Stile di Default dell'allegato dei Banner"
+  banner_default_url: "URL di Default dell'allegato dei Banner"
+  banner_path: "Percorso dell'allegato dei Banner"
+  banner_styles: "Stili di Paperclip dei Banner"
+  banner_url: "URL dell'allegato dei Banner"
+  back_to_banner_boxes_list: "Torna all'elenco Banner"
+  new_banner_box: "Nuova Banner"
+  listing_banner_boxes: "Elenco Banner"
+  enabled: Attivo?
+  url: Link url
+  attachment: Immagine
+  category: Categoria
+  banner_boxes: Banners
+  banner_box: Banner
+  notice_messages:
+    banner_box_cloned: "Banner Duplicato"
+    banner_box_not_cloned: "Impossibili Duplicare il Banner"
   activerecord:
     models:
       banner_box:
@@ -9,5 +32,4 @@ it:
         category: Categoria
         updated_at: Aggiornata il
         created_at: Creata il
-        enabled: Attiva?
-        enable_navigation: Tasti navigazione attivi?
+        enabled: Attivo?
