@@ -6,9 +6,9 @@ module Spree
                 :url  => "/spree/banners/:id/:style_:basename.:extension",
                 :path => ":rails_root/public/spree/banners/:id/:style_:basename.:extension",
                 :styles => lambda {|a|{
-                  :mini => "80x80#",
-                  :small => "120x120#",
-                  :custom => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#"
+                  :mini => { :geometry => "48x48>"},
+                  :small => { :geometry => "100x100>"},
+                  :custom => { :geometry => "#{a.instance.attachment_width}x#{a.instance.attachment_height}#" }
                 }},
                 :convert_options => { :all => '-strip -auto-orient' }
     # save the w,h of the original image (from which others can be calculated)
@@ -35,6 +35,7 @@ module Spree
       super(*args)
       last_banner = BannerBox.last
       self.position = last_banner ? last_banner.position + 1 : 0
+      puts "lala"
     end
     
     # for adding banner_boxes which are closely related to existing ones
