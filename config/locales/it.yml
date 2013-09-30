@@ -19,6 +19,7 @@ it:
   category: Categoria
   banner_boxes: Banners
   banner_box: Banner
+  show_only_enabled: "Mostra solo attivi"
   notice_messages:
     banner_box_cloned: "Banner Duplicato"
     banner_box_not_cloned: "Impossibili Duplicare il Banner"

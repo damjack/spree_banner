@@ -82,5 +82,9 @@ module Spree
       Spree::BannerBox.attachment_definitions[:attachment][:default_style] = Spree::Config[:banner_default_style]
     end
 
+    def self.categories_for_select
+      unscoped.pluck(:category).uniq.sort
+    end
+
   end
 end

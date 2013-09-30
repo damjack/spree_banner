@@ -19,6 +19,7 @@ en:
   category: Category
   banner_boxes: Banners
   banner_box: Banner
+  show_only_enabled: "Show only enabled"
   notice_messages:
     banner_box_cloned: "Banner has been cloned"
     banner_box_not_cloned: "Banner could not be cloned"
