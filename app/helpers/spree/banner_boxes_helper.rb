@@ -4,7 +4,7 @@ module Spree
     def insert_banner_box(params={})
       params[:category] ||= "home"
       params[:class] ||= "banner"
-      params[:style] ||= "small"
+      params[:style] ||= Spree::Config[:banner_default_style]
       params[:list] ||= false
       @@banner = Spree::BannerBox.enabled(params[:category])
       if @@banner.blank?
