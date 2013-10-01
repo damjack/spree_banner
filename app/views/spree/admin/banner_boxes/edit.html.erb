@@ -3,7 +3,7 @@
 <% content_for :page_actions do %>
   <li><%= button_link_to t(:back_to_banner_boxes_list), admin_banner_boxes_url, :icon => 'icon-arrow-left' %></li>
   <li id="new_banner_box_link">
-    <%= button_link_to t(:new_banner_box), new_object_url, { :remote => true, :icon => 'icon-plus', :id => 'admin_new_banner_box' } %>
+    <%= button_link_to t(:new_banner_box), new_object_url, { :icon => 'icon-plus', :id => 'admin_new_banner_box' } %>
   </li>
 <% end %>
 
