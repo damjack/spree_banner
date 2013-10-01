@@ -1,47 +1,50 @@
-<div data-hook="admin_banner_box_form_fields">
+<div data-hook="admin_banner_box_form_fields" class="row">
 
-	<div class="left eight columns alpha" data-hook="admin_banner_box_form_left">    
-		<%= f.field_container :category do %>
-			<%= f.label :category, raw(t(:category) + content_tag(:span, ' *', :class => 'required')) %>
-			<%= f.text_field :category, :class => 'fullwidth title' %>
-			<%= f.error_message_on :category %>
-		<% end %>
+  <div class="left eight columns alpha" data-hook="admin_banner_box_form_left">
+    <%= f.field_container :category do %>
+      <%= f.label :category, raw(t(:category) + content_tag(:span, ' *', :class => 'required')) %>
+      <%= f.text_field :category, :class => 'fullwidth title' %>
+      <%= f.error_message_on :category %>
+    <% end %>
 
-		<%= f.field_container :url do %>
-			<%= f.label :url, raw(t(:url)) %>
-			<%= f.text_field :url, :class => 'fullwidth title' %>
-			<%= f.error_message_on :url %>
-		<% end %>
+    <%= f.field_container :url do %>
+      <%= f.label :url, raw(t(:url)) %>
+      <%= f.text_field :url, :class => 'fullwidth title' %>
+      <%= f.error_message_on :url %>
+    <% end %>
+  </div>
 
-		<%= f.field_container :alt_text do %>
-			<%= f.label :alt_text, t(:alt_text) %>
-			<%= f.text_field :alt_text, :class => 'fullwidth' %>
-			<%= f.error_message_on :alt_text %>
-		<% end %>
-	</div>
+  <div class="right eight columns omega" data-hook="admin_banner_box_form_right">
+    <% unless f.object.new_record? %>
+      <div data-hook="thumbnail" class="field alpha two columns">
+        <%= f.label t(:thumbnail) %><br>
+        <%= link_to image_tag(@banner_box.attachment.url(:mini)), @banner_box.attachment.url(:small) %>
+      </div>
+    <% end %>
 
-	<div class="right seven columns omega" data-hook="admin_banner_box_form_right">
-		<div data-hook="thumbnail" class="field alpha six columns align-center">
-			<%= f.label t(:thumbnail) %><br>
-			<%= link_to image_tag(@banner_box.attachment.url(:mini)), @banner_box.attachment.url(:small) %>
-		</div>
-		
-		<%= f.field_container :attachment do %>
-			<%= f.label :attachment, t(:attachment) %><br />
-			<%= f.file_field :attachment %>
-			<%= f.error_message_on :attachment %>
-		<% end %>
+    <%= f.field_container :attachment do %>
+      <%= f.label :attachment, t(:attachment) %><br />
+      <%= f.file_field :attachment %>
+      <%= f.error_message_on :attachment %>
+    <% end %>
+    <div class="clear"></div>
 
-		<%= f.field_container :enabled do %>
-			<%= f.label :enabled, t(:enabled) %><br />
-			<%= f.check_box :enabled %>
-			<%= f.error_message_on :enabled %>
-		<% end %>
-	</div>
+    <%= f.field_container :alt_text do %>
+      <%= f.label :alt_text, t(:alt_text) %>
+      <%= f.text_field :alt_text, :class => 'fullwidth' %>
+      <%= f.error_message_on :alt_text %>
+    <% end %>
 
-	<div class="clear"></div>
+    <%= f.field_container :enabled do %>
+      <%= f.label :enabled, t(:enabled) %><br />
+      <%= f.check_box :enabled %>
+      <%= f.error_message_on :enabled %>
+    <% end %>
+  </div>
 
-	<div data-hook="admin_banner_box_form_additional_fields"></div>
+  <div class="clear"></div>
 
-	<div class="clear"></div>
+  <div data-hook="admin_banner_box_form_additional_fields"></div>
+
+  <div class="clear"></div>
 </div>
