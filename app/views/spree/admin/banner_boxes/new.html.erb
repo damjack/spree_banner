@@ -25,10 +25,10 @@
 				<%= f.error_message_on :attachment %>
 			<% end %>
 			
-			<%= f.field_container :presentation do %>
-				<%= f.label :presentation, t(:alt_text) %><br />
-				<%= f.text_field :presentation, :class => 'fullwidth' %>
-				<%= f.error_message_on :presentation %>
+			<%= f.field_container :alt_text do %>
+				<%= f.label :alt_text, t(:alt_text) %><br />
+				<%= f.text_field :alt_text, :class => 'fullwidth' %>
+				<%= f.error_message_on :alt_text %>
 			<% end %>
 
 			<%= f.field_container :enabled do %>

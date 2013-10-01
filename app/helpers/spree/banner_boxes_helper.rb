@@ -6,17 +6,29 @@ module Spree
       params[:class] ||= "banner"
       params[:style] ||= Spree::Config[:banner_default_style]
       params[:list] ||= false
-      @@banner = Spree::BannerBox.enabled(params[:category])
-      if @@banner.blank?
-        return ''
-      end
-      res = []
-      banner = @@banner.sort_by { |ban| ban.position }
+      banners = Spree::BannerBox.enabled(params[:category]).order(:position)
+      return '' if banners.empty?
 
-      if (params[:list])
-        content_tag(:ul, banner.map{|ban| content_tag(:li, link_to(image_tag(ban.attachment.url(params[:style].to_sym)), (ban.url.blank? ? "javascript: void(0)" : ban.url)), :class => params[:class])}.join().html_safe )
+      if params[:list]
+        content_tag :ul do
+          banners.map do |ban|
+            content_tag :li, :class => params[:class] do
+              link_to (ban.url.blank? ? "javascript: void(0)" : ban.url) do
+                src = ban.attachment.url(params[:style].to_sym)
+                image_tag(src, :alt => ban.alt_text.presence || image_alt(src))
+              end
+            end
+          end.join.html_safe
+        end
       else
-        banner.map{|ban| content_tag(:div, link_to(image_tag(ban.attachment.url(params[:style].to_sym)), (ban.url.blank? ? "javascript: void(0)" : ban.url)), :class => params[:class])}.join().html_safe
+        banners.map do |ban|
+          content_tag :div, :class => params[:class] do
+            link_to (ban.url.blank? ? "javascript: void(0)" : ban.url) do
+              src = ban.attachment.url(params[:style].to_sym)
+              image_tag(ban.attachment.url(params[:style].to_sym), :alt => ban.alt_text.presence || image_alt(src))
+            end
+          end
+        end.join.html_safe
       end
     end
 
