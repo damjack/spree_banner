@@ -32,11 +32,11 @@ module Spree
     include Spree::Core::S3Support
     supports_s3 :attachment
 
-    Spree::BannerBox.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:banner_styles]).symbolize_keys!
-    Spree::BannerBox.attachment_definitions[:attachment][:path] = Spree::Config[:banner_path]
-    Spree::BannerBox.attachment_definitions[:attachment][:url] = Spree::Config[:banner_url]
-    Spree::BannerBox.attachment_definitions[:attachment][:default_url] = Spree::Config[:banner_default_url]
-    Spree::BannerBox.attachment_definitions[:attachment][:default_style] = Spree::Config[:banner_default_style].to_sym
+    Spree::BannerBox.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(SpreeBanner::Config[:banner_styles]).symbolize_keys!
+    Spree::BannerBox.attachment_definitions[:attachment][:path] = SpreeBanner::Config[:banner_path]
+    Spree::BannerBox.attachment_definitions[:attachment][:url] = SpreeBanner::Config[:banner_url]
+    Spree::BannerBox.attachment_definitions[:attachment][:default_url] = SpreeBanner::Config[:banner_default_url]
+    Spree::BannerBox.attachment_definitions[:attachment][:default_style] = SpreeBanner::Config[:banner_default_style].to_sym
 
     def initialize(*args)
       super(*args)
@@ -72,14 +72,14 @@ module Spree
 
     def enhance_settings
       extended_hash = {}
-      ActiveSupport::JSON.decode(Spree::Config[:banner_styles]).each do |key,value|
+      ActiveSupport::JSON.decode(SpreeBanner::Config[:banner_styles]).each do |key,value|
         extended_hash[:"#{key}"] = value
       end
       Spree::BannerBox.attachment_definitions[:attachment][:styles] = extended_hash
-      Spree::BannerBox.attachment_definitions[:attachment][:path] = Spree::Config[:banner_path]
-      Spree::BannerBox.attachment_definitions[:attachment][:url] = Spree::Config[:banner_url]
-      Spree::BannerBox.attachment_definitions[:attachment][:default_url] = Spree::Config[:banner_default_url]
-      Spree::BannerBox.attachment_definitions[:attachment][:default_style] = Spree::Config[:banner_default_style]
+      Spree::BannerBox.attachment_definitions[:attachment][:path] = SpreeBanner::Config[:banner_path]
+      Spree::BannerBox.attachment_definitions[:attachment][:url] = SpreeBanner::Config[:banner_url]
+      Spree::BannerBox.attachment_definitions[:attachment][:default_url] = SpreeBanner::Config[:banner_default_url]
+      Spree::BannerBox.attachment_definitions[:attachment][:default_style] = SpreeBanner::Config[:banner_default_style]
     end
 
     def self.categories_for_select
