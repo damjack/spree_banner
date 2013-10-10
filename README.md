@@ -8,11 +8,15 @@ Installation
 ------------
 
 1. Add the following to your Gemfile
+
 ```ruby
 gem 'spree_banner', '~> 2.0.0'
 ```
+
 2. Run `bundle install`
+
 3. To copy and apply migrations run:
+
 ```
 rails g spree_banner:install
 ```
@@ -36,10 +40,13 @@ Banner use example
 ------------------
 
 1. Add banner helper method in your view:
+
 ```erb
 <%= insert_banner_box(category: "my_category") %>
 ```
+
 2. Additional options:
+
 ```ruby
   :class => "my_class"
   :style => "my_style"
