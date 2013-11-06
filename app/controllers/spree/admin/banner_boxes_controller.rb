@@ -39,7 +39,7 @@ module Spree
       def collection
         return @collection if @collection.present?
         params[:q] ||= {}
-        params[:q][:s] ||= "title asc"
+        params[:q][:s] ||= "category, position asc"
         
         @search = super.ransack(params[:q])
         @collection = @search.result.page(params[:page]).per(Spree::Config[:admin_products_per_page])

@@ -1,43 +1,9 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @banner_box } %>
 
 <%= form_for [:admin, @banner_box], :html => { :multipart => true } do |f| %>
-<fieldset data-hook="new_banner_box">
-	<legend align="center"><%= t(:new_banner_box) %></legend>
-	<div data-hook="new_banner_box_attrs" class="row">
-		<div class="left alpha eight columns">
-			<%= f.field_container :category do %>
-				<%= f.label :category, t(:category) %> <span class="required">*</span><br />
-				<%= f.text_field :category, :class => 'fullwidth title' %>
-				<%= f.error_message_on :category %>
-			<% end %>
-
-			<%= f.field_container :url do %>
-				<%= f.label :url, t(:url) %><br />
-				<%= f.text_field :url, :class => 'fullwidth title' %>
-				<%= f.error_message_on :url %>
-			<% end %>
-		</div>
-		
-		<div class="right omega four columns">
-			<%= f.field_container :attachment do %>
-				<%= f.label :attachment, t(:attachment) %><br />
-				<%= f.file_field :attachment %>
-				<%= f.error_message_on :attachment %>
-			<% end %>
-			
-			<%= f.field_container :presentation do %>
-				<%= f.label :presentation, t(:alt_text) %><br />
-				<%= f.text_field :presentation, :class => 'fullwidth' %>
-				<%= f.error_message_on :presentation %>
-			<% end %>
-
-			<%= f.field_container :enabled do %>
-				<%= f.label :enabled, t(:enabled) %><br />
-				<%= f.check_box :enabled %>
-				<%= f.error_message_on :enabled %>
-			<% end %>
-		</div>
-	</div>
-	<%= render :partial => 'spree/admin/shared/new_resource_links' %>
-</fieldset>
+  <fieldset data-hook="new_banner_box">
+    <legend align="center"><%= t(:new_banner_box) %></legend>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
 <% end %>

@@ -1,25 +1,25 @@
 module Spree
   module Admin
     class BannerBoxSettingsController < Spree::Admin::BaseController
-      
+
       def show
         redirect_to( :action => :edit )
       end
 
       def create
         update_paperclip_settings
-        @styles = ActiveSupport::JSON.decode(Spree::Config[:banner_styles])
+        @styles = ActiveSupport::JSON.decode(SpreeBanner::Config[:banner_styles])
         super
       end
 
       def edit
-        @styles = ActiveSupport::JSON.decode(Spree::Config[:banner_styles])
+        @styles = ActiveSupport::JSON.decode(SpreeBanner::Config[:banner_styles])
       end
 
       def update
         update_styles(params)
 
-        Spree::Config.set(params[:preferences])
+        SpreeBanner::Config.set(params[:preferences])
         update_paperclip_settings
 
         respond_to do |format|
@@ -40,20 +40,19 @@ module Spree
 
         styles = params[:banner_styles]
 
-        Spree::Config[:banner_styles] = ActiveSupport::JSON.encode(styles) unless styles.nil?
+        SpreeBanner::Config[:banner_styles] = ActiveSupport::JSON.encode(styles) unless styles.nil?
       end
 
       def update_paperclip_settings
         extended_hash = {}
-        ActiveSupport::JSON.decode(Spree::Config[:banner_styles]).each do |key,value|
+        ActiveSupport::JSON.decode(SpreeBanner::Config[:banner_styles]).each do |key,value|
           extended_hash[:"#{key}"] = value
         end
         Spree::BannerBox.attachment_definitions[:attachment][:styles] = extended_hash
-        Spree::BannerBox.attachment_definitions[:attachment][:path] = Spree::Config[:banner_path]
-        Spree::BannerBox.attachment_definitions[:attachment][:default_url] = Spree::Config[:banner_default_url]
-        Spree::BannerBox.attachment_definitions[:attachment][:default_style] = Spree::Config[:banner_default_style]
+        Spree::BannerBox.attachment_definitions[:attachment][:path] = SpreeBanner::Config[:banner_path]
+        Spree::BannerBox.attachment_definitions[:attachment][:default_url] = SpreeBanner::Config[:banner_default_url]
+        Spree::BannerBox.attachment_definitions[:attachment][:default_style] = SpreeBanner::Config[:banner_default_style]
       end
     end
   end
 end
-
