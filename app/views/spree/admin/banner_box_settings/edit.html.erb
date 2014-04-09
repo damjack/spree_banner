@@ -18,27 +18,27 @@
 
       <div data-hook="attachment_path" class="field">
         <%= label_tag 'preferences[attachment_path]', t(:banner_path) %>
-        <%= preference_field_tag 'preferences[banner_path]', Spree::Config[:banner_path], :type => :string %>
+        <%= preference_field_tag 'preferences[banner_path]', SpreeBanner::Config[:banner_path], :type => :string %>
       </div>
 
       <div class="alpha eight columns">
         <div data-hook="attachment_default_url" class="field">
           <%= label_tag 'preferences[attachment_default_url]', t(:banner_default_url) %>
-          <%= preference_field_tag 'preferences[banner_default_url]', Spree::Config[:banner_default_url], :type => :string %>
+          <%= preference_field_tag 'preferences[banner_default_url]', SpreeBanner::Config[:banner_default_url], :type => :string %>
         </div>
       </div>
 
       <div class="alpha eight columns">
         <div data-hook="attachment_url" class="field">
           <%= label_tag 'preferences[attachment_url]', t(:banner_url) %>
-          <%= preference_field_tag 'preferences[banner_url]', Spree::Config[:banner_url], :type => :string %>
+          <%= preference_field_tag 'preferences[banner_url]', SpreeBanner::Config[:banner_url], :type => :string %>
         </div>
       </div>
 
       <div class="omega four columns">
         <div data-hook="attachment_default_style" class="field">
           <%= label_tag 'preferences[attachment_default_style]', t(:banner_default_style) %>
-          <%= collection_select 'preferences', 'banner_default_style', @styles, :first, :first, {:selected => Spree::Config[:banner_default_style] }, :class => 'select2 fullwidth' %> 
+          <%= collection_select 'preferences', 'banner_default_style', @styles, :first, :first, {:selected => SpreeBanner::Config[:banner_default_style] }, :class => 'select2 fullwidth' %> 
         </div>
       </div>
 
